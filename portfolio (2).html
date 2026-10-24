@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Murtaza Hassan — Environmental Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#122318; --ink-soft:#3A4E3F;
+  --sky-top:#BEE6EF; --sky-bottom:#F6E6BE;
+  --meadow:#EEF3DC; --meadow-deep:#DCE8C4;
+  --forest:#153A28; --forest-light:#1F5138;
+  --leaf:#3E8E4F; --leaf-bright:#8FBF4C; --leaf-deep:#215E37;
+  --sun:#F0A93B; --sun-deep:#D9852A;
+  --cream:#FBF6E9;
+  --water-top:#0E4A58; --water-bottom:#0A2F3A;
+  --water-bright:#4FB8C9;
+  --bark:#6B4226;
+  --card:#FFFFFF;
+  --line:rgba(18,35,24,0.14);
+}
+[data-theme="dark"], html[data-theme="dark"]{
+  --ink:#EAF2E9; --ink-soft:#B9CBB9;
+  --sky-top:#0D2430; --sky-bottom:#2A2A1E;
+  --meadow:#12241A; --meadow-deep:#0E1D15;
+  --forest:#0B1A11; --forest-light:#12281B;
+  --leaf:#6FBF7C; --leaf-bright:#A8D96A; --leaf-deep:#4C9560;
+  --sun:#F0B45E; --sun-deep:#E09B3E;
+  --cream:#15201A;
+  --water-top:#081D24; --water-bottom:#05141A;
+  --water-bright:#6ED2E0;
+  --bark:#B98A63;
+  --card:#1B2A20;
+  --line:rgba(234,242,233,0.14);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#EAF2E9; --ink-soft:#B9CBB9;
+    --sky-top:#0D2430; --sky-bottom:#2A2A1E;
+    --meadow:#12241A; --meadow-deep:#0E1D15;
+    --forest:#0B1A11; --forest-light:#12281B;
+    --leaf:#6FBF7C; --leaf-bright:#A8D96A; --leaf-deep:#4C9560;
+    --sun:#F0B45E; --sun-deep:#E09B3E;
+    --cream:#15201A;
+    --water-top:#081D24; --water-bottom:#05141A;
+    --water-bright:#6ED2E0;
+    --bark:#B98A63;
+    --card:#1B2A20;
+    --line:rgba(234,242,233,0.14);
+  }
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Manrope',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+::selection{background:var(--leaf);color:#fff;}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;margin:0;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:2;}
+@media (max-width:640px){.wrap{padding:0 22px;}}
+
+nav{position:sticky;top:0;z-index:80;backdrop-filter:blur(10px);background:color-mix(in srgb, var(--cream) 78%, transparent);border-bottom:1px solid var(--line);}
+.nav-inner{max-width:1100px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;}
+@media (max-width:640px){.nav-inner{padding:14px 22px;}}
+.nav-mark{display:flex;align-items:center;gap:8px;font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--forest);}
+.nav-mark svg{width:20px;height:20px;color:var(--leaf);}
+.nav-links{display:flex;gap:24px;font-size:13.5px;}
+.nav-links a{color:var(--ink-soft);text-decoration:none;position:relative;}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;border-radius:2px;background:var(--leaf);transition:right .35s ease;}
+.nav-links a:hover::after{right:0;}
+@media (max-width:780px){.nav-links{display:none;}}
+
+/* HERO */
+.hero{position:relative;min-height:72vh;padding-top:56px;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 100%);}
+.sky-layer{position:absolute;inset:0;z-index:0;}
+.horizon-glow{position:absolute;top:8%;right:12%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle, rgba(240,169,59,0.28) 0%, transparent 70%);}
+.contour-overlay{position:absolute;inset:0;width:100%;height:100%;opacity:0.4;}
+.contour-overlay path{fill:none;stroke:var(--leaf-deep);stroke-width:1;stroke-dasharray:2200;stroke-dashoffset:2200;animation:drawline 2.8s ease-out forwards;}
+@keyframes drawline{to{stroke-dashoffset:0;}}
+@media (prefers-reduced-motion:reduce){.contour-overlay path{animation:none;stroke-dashoffset:0;}}
+
+.hill{position:absolute;left:0;right:0;bottom:0;width:100%;}
+.hill svg{width:100%;height:auto;display:block;}
+.hill.back{ z-index:1; }
+.hill.mid{ z-index:2; }
+.hill.front{ z-index:3; }
+
+.hero-inner{position:relative;z-index:4;width:100%;padding-bottom:84px;}
+.hero-content{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:flex-end;}
+@media (max-width:840px){.hero-content{grid-template-columns:1fr;}}
+
+.eyebrow-mark{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--forest);display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.55);padding:6px 14px;border-radius:999px;margin-bottom:20px;opacity:0;animation:rise .8s ease forwards;animation-delay:.3s;}
+.eyebrow-mark span.dot{width:6px;height:6px;border-radius:50%;background:var(--leaf);}
+.hero h1{font-size:clamp(2rem,5.4vw,4.2rem);white-space:nowrap;line-height:1.05;color:var(--forest);letter-spacing:-0.01em;opacity:0;animation:rise .9s ease forwards;animation-delay:.45s;text-shadow:0 2px 24px rgba(255,255,255,.4);}
+.hero .role{font-family:'IBM Plex Mono',monospace;font-size:14.5px;color:var(--bark);margin-top:16px;opacity:0;animation:rise .9s ease forwards;animation-delay:.65s;}
+.hero p.lede{max-width:44ch;margin-top:20px;color:var(--ink-soft);font-size:16.5px;opacity:0;animation:rise .9s ease forwards;animation-delay:.85s;}
+@keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+.hero .greet{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--forest);margin:24px 0 0;opacity:0;animation:rise .9s ease forwards;animation-delay:.85s;}
+.hero .quote{margin:8px 0 0;max-width:34ch;font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;line-height:1.45;color:var(--ink-soft);opacity:0;animation:rise .9s ease forwards;animation-delay:1s;}
+.photo-frame{justify-self:center;width:min(230px,60vw);aspect-ratio:1/1;border-radius:50%;border:3px solid rgba(255,255,255,0.9);background:rgba(255,255,255,0.35);box-shadow:0 0 0 8px rgba(255,255,255,0.14), 0 20px 40px rgba(18,35,24,0.12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--forest);opacity:0;animation:rise 1s ease forwards;animation-delay:1.05s;position:relative;overflow:hidden; margin-bottom: 80px;}
+.photo-frame svg{width:34px;height:34px;opacity:.6;}
+.photo-frame span{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.02em;}
+.photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;z-index:2;background:transparent;}
+
+/* WAVE DIVIDERS */
+.wave{display:block;width:100%;line-height:0;position:relative;z-index:5;margin-top:-2px;}
+.wave svg{width:100%;height:60px;display:block;}
+@media (max-width:640px){.wave svg{height:36px;}}
+
+/* SECTION SCAFFOLD */
+section{position:relative;padding:104px 0;}
+.section-head{display:grid;grid-template-columns:210px 1fr;gap:36px;margin-bottom:44px;}
+@media (max-width:760px){.section-head{grid-template-columns:1fr;gap:12px;}}
+.section-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--leaf-deep);display:flex;align-items:center;gap:8px;}
+.section-num svg{width:14px;height:14px;}
+.section-head h2{font-size:1.9rem;}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ABOUT — meadow */
+.about-sec{background:var(--meadow);}
+.about-grid{display:grid;grid-template-columns:210px 1fr;gap:36px;}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+.about-grid p{max-width:62ch;color:var(--ink-soft);font-size:16.5px;}
+.about-grid p+p{margin-top:14px;}
+.focus-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.leaf-chip{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 15px 8px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink-soft);display:inline-flex;align-items:center;gap:7px;transition:background .25s ease,color .25s ease,transform .2s ease;}
+.leaf-chip svg{width:13px;height:13px;color:var(--leaf);flex-shrink:0;}
+.leaf-chip:hover{background:var(--leaf-deep);color:#fff;transform:translateY(-2px);}
+.leaf-chip:hover svg{color:#fff;}
+
+/* EDUCATION — forest dark */
+.edu-sec{background:var(--forest);color:#EAF2E9;}
+.edu-sec .section-num{color:var(--leaf-bright);}
+.edu-sec h2{color:#fff;}
+.edu-grid{display:grid;grid-template-columns:210px 1fr 220px;gap:36px;align-items:center;}
+@media (max-width:800px){.edu-grid{grid-template-columns:1fr;}}
+.edu-body h3{font-size:1.3rem;color:#fff;}
+.edu-meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--leaf-bright);margin-top:8px;}
+.edu-body p{color:#C6D6C9;margin-top:14px;max-width:58ch;}
+.rings{width:170px;height:170px;}
+.ring-lbl{text-align:center;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C6D6C9;}
+.ring-num{font-family:'Fraunces',serif;font-size:1.9rem;color:#fff;text-align:center;}
+
+/* INTERNSHIP + FYP — sun gradient */
+.energy-sec{background:linear-gradient(180deg,#FCEEDA 0%, #F6DDAF 100%);}
+[data-theme="dark"] .energy-sec, html[data-theme="dark"] .energy-sec{background:linear-gradient(180deg,#231A0E 0%, #2C2213 100%);}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .energy-sec{background:linear-gradient(180deg,#231A0E 0%, #2C2213 100%);}}
+.card-plain{border-left:3px solid var(--sun-deep);padding:6px 0 6px 26px;max-width:70ch;margin-bottom:70px;}
+.card-plain h3{font-size:1.2rem;}
+.card-plain p{color:var(--ink-soft);margin-top:12px;}
+.card-plain.tight{margin-bottom:36px;}
+.card-plain.tight:last-child{margin-bottom:0;}
+.exp-wrap{padding-top:96px;background:#F6DDAF;}
+[data-theme="dark"] .exp-wrap, html[data-theme="dark"] .exp-wrap{background:#2C2213;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .exp-wrap{background:#2C2213;}}
+.fyp-grid{display:grid;grid-template-columns:210px 1fr 300px;gap:36px;align-items:center;}
+@media (max-width:900px){.fyp-grid{grid-template-columns:1fr;}}
+.fyp-body h3{font-size:1.5rem;max-width:28ch;line-height:1.3;}
+.fyp-body p{color:var(--ink-soft);margin-top:16px;max-width:52ch;}
+.fyp-diagram{position:relative;}
+.fyp-img{width:100%;height:auto;max-height:440px;object-fit:cover;display:block;border-radius:14px;box-shadow:0 14px 30px rgba(18,35,24,0.18);}
+/* TIMELINE — light forest */
+.timeline-sec{background:var(--meadow-deep);}
+.vine{position:relative;padding-left:34px;max-width:74ch;}
+.vine::before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:var(--leaf);opacity:.4;border-radius:2px;}
+.t-item{position:relative;padding-bottom:36px;}
+.t-item:last-child{padding-bottom:0;}
+.t-item::before{content:"";position:absolute;left:-34px;top:2px;width:16px;height:16px;color:var(--leaf-deep);}
+.t-date{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--water-bright);}
+.t-item h3{font-size:1.03rem;margin-top:4px;font-weight:600;}
+.t-item p{color:var(--ink-soft);font-size:14.5px;margin-top:4px;}
+
+/* CERTIFICATIONS — cream, side-scroll carousel */
+.cert-sec{background:var(--cream);}
+.cert-carousel{position:relative;}
+.cert-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--forest);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(18,35,24,0.12);transition:background .2s ease,transform .2s ease;}
+.cert-btn:hover{background:var(--leaf-deep);color:#fff;transform:translateY(-50%) scale(1.06);}
+.cert-btn svg{width:18px;height:18px;}
+.cert-btn.prev{left:-6px;}
+.cert-btn.next{right:-6px;}
+@media (max-width:640px){.cert-btn{width:36px;height:36px;}.cert-btn.prev{left:-2px;}.cert-btn.next{right:-2px;}}
+.cert-track{display:flex;gap:22px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding:10px 54px 26px;scrollbar-width:none;-ms-overflow-style:none;}
+.cert-track::-webkit-scrollbar{display:none;}
+.cert-card{flex:0 0 250px;aspect-ratio:4/3;scroll-snap-align:start;border-radius:14px;border:2px dashed var(--line);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--ink-soft);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;position:relative;}
+.cert-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 18px 34px rgba(18,35,24,0.16);border-color:var(--leaf);border-style:solid;}
+.cert-card .cert-num{position:absolute;top:12px;left:14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--bark);z-index:3;background:rgba(255,255,255,0.75);padding:2px 7px;border-radius:6px;}
+.cert-card svg{width:30px;height:30px;opacity:.45;}
+.cert-card span.cert-lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center;padding:0 16px;}
+.cert-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;z-index:2;}
+
+/* COURSES / SKILLS / LANGUAGES — cream */
+.grove-sec{background:var(--cream);}
+.badge-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media (max-width:640px){.badge-row{grid-template-columns:1fr;}}
+.badge{border:1px solid var(--line);border-radius:18px;padding:24px 26px;background:var(--card);}
+.badge .k{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--bark);}
+.badge .k svg{width:16px;height:16px;color:var(--leaf);}
+.badge h3{font-size:1.05rem;margin-top:10px;}
+.badge p{color:var(--ink-soft);font-size:14px;margin-top:8px;}
+
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:80px;}
+@media (max-width:760px){.skills-grid{grid-template-columns:1fr;gap:36px;}}
+.skills-col .k{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--bark);margin-bottom:14px;display:block;}
+.eq-list,.digi-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+.eq-list li{display:flex;align-items:center;gap:12px;font-size:14.5px;color:var(--ink-soft);}
+.eq-list li .ico{width:30px;height:30px;border-radius:50%;background:var(--meadow);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.eq-list li .ico svg{width:16px;height:16px;color:var(--leaf-deep);}
+.digi-list li{font-size:14.5px;color:var(--ink-soft);border-bottom:1px solid var(--line);padding-bottom:12px;}
+.digi-list li:last-child{border-bottom:none;}
+
+.lang-row{display:flex;flex-direction:column;gap:18px;max-width:44ch;margin-top:80px;}
+.lang-line{display:grid;grid-template-columns:100px 1fr auto;align-items:center;gap:16px;}
+.lang-line .name{font-size:14.5px;}
+.lang-line .track{height:6px;background:var(--meadow-deep);border-radius:4px;position:relative;overflow:hidden;}
+.lang-line .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--leaf),var(--leaf-bright));width:0;border-radius:4px;transition:width 1.2s ease;}
+.lang-line .lvl{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+
+/* FOOTER — water */
+.water-sec{background:linear-gradient(180deg,var(--water-top) 0%, var(--water-bottom) 100%);color:#DCEFF2;padding-top:0;}
+.water-sec .section-num{color:var(--water-bright);}
+.water-sec h2{color:#fff;}
+.ripple-wrap{position:relative;overflow:hidden;padding:80px 0 60px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-bottom:50px;}
+@media (max-width:760px){.contact-grid{grid-template-columns:1fr;gap:22px;}}
+.contact-item .k{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--water-bright);display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+.contact-item .k svg{width:14px;height:14px;}
+.contact-item a,.contact-item span{color:#EAF6F8;text-decoration:none;font-size:15px;}
+.contact-item a{display:block;overflow-wrap:anywhere;}
+.contact-item a+a{margin-top:6px;}
+.contact-item a:hover{color:var(--water-bright);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,0.15);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#9FC3C9;}
+/* JUSTIFIED TEXT */
+.about-grid p,.edu-body p,.fyp-body p,.card-plain p,.t-item p,.badge p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9zm0 4c2.8 0 5 2.2 5 5 0 1-3 1-5 1s-5 0-5-1c0-2.8 2.2-5 5-5z"/></svg>M. Hassan</span>
+    <div class="nav-links">
+      <a href="#about">Profile</a>
+      <a href="#education">Education</a>
+      <a href="#project">Project</a>
+      <a href="#experience">Experience</a>
+      <a href="#timeline">Seminars</a>
+      <a href="#certifications">Certificates</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="sky-layer">
+    <div class="horizon-glow"></div>
+    
+  </div>
+
+  <div class="hill back">
+    <svg viewBox="0 0 1440 260" preserveAspectRatio="none"><path fill="#8FBF7A" opacity="0.55" d="M0,180 C240,100 380,220 620,140 C860,60 1000,180 1200,120 C1320,90 1400,120 1440,110 L1440,260 L0,260 Z"/></svg>
+  </div>
+  <div class="hill mid">
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none"><path fill="#5FA35C" opacity="0.75" d="M0,160 C180,90 340,190 560,130 C800,65 960,170 1180,110 C1300,80 1380,110 1440,100 L1440,220 L0,220 Z"/></svg>
+  </div>
+  <div class="hill front">
+    <svg viewBox="0 0 1440 170" preserveAspectRatio="none"><path fill="#215E37" d="M0,120 C200,70 380,150 600,100 C840,50 1000,140 1220,90 C1320,68 1380,90 1440,80 L1440,170 L0,170 Z"/></svg>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-content">
+      <div>
+        <div class="eyebrow-mark"><span class="dot"></span>Nawabshah, Sindh, Pakistan</div>
+        <h1>Murtaza Hassan</h1>
+        <div class="role">Environmental Engineer</div>
+        <p class="greet">Hello and welcome!</p>
+        <p class="quote">&ldquo;Where there is a will, there is a way.&rdquo;</p>
+      </div>
+      <div class="photo-frame">
+        <img class="photo-img" src="M.jpeg" alt="Murtaza Hassan" onerror="this.style.display='none'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.4-4 4.2-6 7.5-6s6.1 2 7.5 6"/></svg>
+        <span>Photograph</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#EEF3DE" d="M0,30 C200,60 400,0 720,20 C1040,40 1240,0 1440,25 L1440,60 L0,60 Z"/></svg></div>
+
+<section id="about" class="about-sec">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="section-num"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>01 — Profile</div>
+      <div class="reveal">
+        <p>I have always believed that every step, challenge, and experience has something valuable to teach us. My journey so far has taught me the importance of hard work, patience, and staying committed to my goals, even when the path is not easy. I see every new opportunity as a chance to learn, grow, and discover what I am capable of achieving. Through this journey, I hope to turn my dreams into reality, make a positive difference, and continue becoming the person I aspire to be.</p>
+        <div class="focus-row">
+          <span class="leaf-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Project management</span>
+          <span class="leaf-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Research paper</span>
+          <span class="leaf-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Teamwork</span>
+          <span class="leaf-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Time management</span>
+          <span class="leaf-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Leadership</span>
+          <span class="leaf-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Decision making</span>
+          <span class="leaf-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Critical thinking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="edu-sec">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>02 — Education</div>
+      <h2>Academic foundation</h2>
+    </div>
+    <div class="edu-grid reveal">
+      <div></div>
+      <div class="edu-body">
+        <h3>Bachelor of Environmental Engineering</h3>
+        <div class="edu-meta">Quaid-e-Awam University of Engineering, Science and Technology (QUEST), Nawabshah — 2020 to 2024</div>
+        <p>During my undergraduate studies, I put in considerable effort to achieve excellent academic results, earning first place in both my department and faculty. I earned two gold medals and one silver medal at the 15th Academic Convocation of QUEST. These accomplishments are an important part of my educational journey.</p>
+      </div>
+      <div>
+        <svg class="rings" viewBox="0 0 170 170">
+          <circle cx="85" cy="85" r="78" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="10"/>
+          <circle id="cgpaRing" cx="85" cy="85" r="78" fill="none" stroke="var(--leaf-bright)" stroke-width="10" stroke-linecap="round" stroke-dasharray="490" stroke-dashoffset="490" transform="rotate(-90 85 85)"/>
+        </svg>
+        <div class="ring-num">3.94</div>
+        <div class="ring-lbl">CGPA / 4.00</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#FCEEDA" d="M0,20 C220,55 420,0 720,25 C1020,50 1240,10 1440,30 L1440,60 L0,60 Z"/></svg></div>
+
+<section id="project" class="energy-sec" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>03 — Final year project</div>
+    </div>
+    <div class="fyp-grid reveal">
+      <div></div>
+      <div class="fyp-body">
+        <h3>Design and performance analysis of a parabolic trough solar water heating system</h3>
+        <p>My final year project aimed at utilizing solar energy to convert water into steam. I live in a hometown where summer temperatures frequently go beyond 50°C, so I wondered why we are not taking benefit of this abundant source of energy. This thought motivated me to develop the project, which I successfully completed.</p>
+        <p>Subsequently, it received a nomination for the National Incubation Center Karachi, and I also presented it at the 1st International Symposium on Climate Change, Mitigation, and Environmental Sustainability held at my university.</p>
+      </div>
+      <div class="fyp-diagram">
+        <img class="fyp-img" src="project.jpg" alt="Parabolic trough solar water heating system, final year project">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="energy-sec exp-wrap">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>04 — Work experience</div>
+      <h2>Professional experience</h2>
+    </div>
+    <div class="reveal">
+      <div class="card-plain tight">
+        <h3>Lab Engineer</h3>
+        <div class="edu-meta" style="color:var(--bark);">Quaid-e-Awam University of Engineering, Science and Technology, Nawabshah, Pakistan</div>
+        <p>6 January 2026 – Present</p>
+      </div>
+      <div class="card-plain tight">
+        <h3>Health, Safety &amp; Environment Trainee</h3>
+        <div class="edu-meta" style="color:var(--bark);">Habib Sugar Mills Limited, Nawabshah, Pakistan</div>
+        <p>10 November 2024 – 26 December 2025</p>
+      </div>
+      <div class="card-plain tight">
+        <h3>Intern</h3>
+        <div class="edu-meta" style="color:var(--bark);">Directorate of Alternative Energy, Government of Sindh, Karachi, Pakistan</div>
+        <p>4 April 2022 – 2 May 2022</p>
+        <p>Reviewed the country's current energy scenario and studied national policy for the development of renewable energy for power generation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#DCE8C4" d="M0,25 C220,0 420,55 720,30 C1020,5 1240,45 1440,20 L1440,60 L0,60 Z"/></svg></div>
+
+<section id="timeline" class="timeline-sec">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>05 — Seminars &amp; certificates</div>
+      <h2>Ongoing engagement with the field</h2>
+    </div>
+    <div class="vine reveal">
+      <div class="t-item">
+        <div class="t-item-icon" style="position:absolute;left:-34px;top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--leaf-deep)"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg></div>
+        <div class="t-date">22 March 2022</div>
+        <h3>World Water Day seminar</h3>
+        <p>Importance of water and its conservation.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-item-icon" style="position:absolute;left:-34px;top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--leaf-deep)"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg></div>
+        <div class="t-date">21 March 2023</div>
+        <h3>1st International Symposium</h3>
+        <p>Climate change, mitigation, and environmental sustainability. Presented my final year project.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-item-icon" style="position:absolute;left:-34px;top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--leaf-deep)"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg></div>
+        <div class="t-date">21 September 2023</div>
+        <h3>One-day seminar</h3>
+        <p>Harmful effects of solid and liquid waste dumping into water bodies.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-item-icon" style="position:absolute;left:-34px;top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--leaf-deep)"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg></div>
+        <div class="t-date">27 February 2024</div>
+        <h3>One-day CPD seminar</h3>
+        <p>Solid and hazardous waste management.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-item-icon" style="position:absolute;left:-34px;top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--leaf-deep)"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg></div>
+        <h3>2nd International Symposium</h3>
+        <p>Climate change and environmental sustainability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" class="grove-sec" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>06 — Courses &amp; membership</div>
+      <h2>Standing and recognition</h2>
+    </div>
+    <div class="badge-row reveal">
+      <div class="badge">
+        <div class="k"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Course</div>
+        <h3>Institution of Occupational Safety &amp; Health (IOSH)</h3>
+        <p>Occupational safety and health fundamentals applied to engineering and field work.</p>
+      </div>
+      <div class="badge">
+        <div class="k"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9z"/></svg>Award</div>
+        <h3>Green Youth Movement (GYM)</h3>
+        <p>Membership awarded by the Prime Minister of Pakistan for environmental youth engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications" class="cert-sec">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>07 — Certifications</div>
+      <h2>Seminars, courses &amp; certificates</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="cert-carousel reveal">
+      <button class="cert-btn prev" id="certPrev" aria-label="Scroll certificates left">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="cert-track" id="certTrack">
+        <div class="cert-card"><span class="cert-num">01</span><img class="cert-img" src="certificate-01.jpeg" alt="Certificate 01" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">02</span><img class="cert-img" src="certificate-02.jpeg" alt="Certificate 02" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">03</span><img class="cert-img" src="certificate-03.jpeg" alt="Certificate 03" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">04</span><img class="cert-img" src="certificate-04.jpeg" alt="Certificate 04" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">05</span><img class="cert-img" src="certificate-05.jpeg" alt="Certificate 05" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">06</span><img class="cert-img" src="certificate-06.jpeg" alt="Certificate 06" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">07</span><img class="cert-img" src="certificate-07.jpeg" alt="Certificate 07" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">08</span><img class="cert-img" src="certificate-08.jpeg" alt="Certificate 08" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">09</span><img class="cert-img" src="certificate-09.jpeg" alt="Certificate 09" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">10</span><img class="cert-img" src="certificate-10.jpeg" alt="Certificate 10" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">11</span><img class="cert-img" src="certificate-11.jpeg" alt="Certificate 11" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">12</span><img class="cert-img" src="certificate-12.jpeg" alt="Certificate 12" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">13</span><img class="cert-img" src="certificate-13.jpeg" alt="Certificate 13" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">14</span><img class="cert-img" src="certificate-14.jpeg" alt="Certificate 14" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+        <div class="cert-card"><span class="cert-num">15</span><img class="cert-img" src="certificate-15.jpeg" alt="Certificate 15" onerror="this.style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 20l1.5-3h3L15 20"/></svg><span class="cert-lbl">Add certificate image</span></div>
+      </div>
+      <button class="cert-btn next" id="certNext" aria-label="Scroll certificates right">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="grove-sec" style="padding-top:0;padding-bottom:0;">
+  <div class="wrap">
+    <div class="skills-grid reveal">
+      <div class="skills-col">
+        <span class="k">Digital skills</span>
+        <ul class="digi-list">
+          <li>MATLAB software</li>
+          <li>GIS software</li>
+          <li>Microsoft Office</li>
+          <li>Mendeley</li>
+        </ul>
+      </div>
+      <div class="skills-col">
+        <span class="k">Equipment skills</span>
+        <ul class="eq-list">
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></span>Thermo anemometer</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v6M12 21v-4M4.2 7l4 3M15.8 14l4 3M4.2 17l4-3M15.8 10l4-3"/></svg></span>Luxmeter magnaflux</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="14" rx="3"/><path d="M12 17v4M9 21h6"/></svg></span>Digital thermo hydrometer</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h4M16 12h4M12 4v4M12 16v4"/><circle cx="12" cy="12" r="3"/></svg></span>Infrared thermometer</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></span>Spectrophotometer</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="6" width="16" height="13" rx="1.5"/><path d="M8 6V4h8v2"/></svg></span>BOD incubator</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 20l4-14h6l4 14"/><path d="M8 12h8"/></svg></span>Flue gas analysers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="languages" class="grove-sec" style="padding-top:0;">
+  <div class="wrap">
+    <div class="lang-row reveal" id="langRow">
+      <div class="lang-line">
+        <span class="name">Sindhi</span>
+        <div class="track"><div class="fill" data-w="100"></div></div>
+        <span class="lvl">Native (L1)</span>
+      </div>
+      <div class="lang-line">
+        <span class="name">Urdu</span>
+        <div class="track"><div class="fill" data-w="85"></div></div>
+        <span class="lvl">L2</span>
+      </div>
+      <div class="lang-line">
+        <span class="name">English</span>
+        <div class="track"><div class="fill" data-w="80"></div></div>
+        <span class="lvl">L2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#0E4A58" d="M0,30 C240,0 400,55 720,25 C1040,-5 1220,50 1440,20 L1440,60 L0,60 Z"/></svg></div>
+<footer id="contact" class="water-sec">
+  <div class="ripple-wrap">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>08 — Contact</div>
+        <h2>Get in touch</h2>
+      </div>
+      <div class="contact-grid reveal" style="align-items:start;">
+        <div class="contact-item">
+          <span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .3 2 .5 3 .6a2 2 0 0 1 1.7 2.1z"/></svg>Phone</span>
+          <a href="tel:03164555666">0316-4555666</a>
+        </div>
+        <div class="contact-item">
+          <span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</span>
+          <a href="mailto:murtazahassan@gmail.com">murtazahassan@gmail.com</a>
+          <a href="mailto:mr.mhchandio@gmail.com">mr.mhchandio@gmail.com</a>
+          <a href="mailto:mjh@quest.edu.pk">mjh@quest.edu.pk</a>
+        </div>
+        <div class="contact-item">
+          <span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Location</span>
+          <span>Quaid-e-Awam University of Engineering, Science and Technology, Nawabshah, Pakistan<br>Postal Code 60000</span>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>Murtaza Hassan — Environmental Engineer</span>
+        <span>Nawabshah, Sindh, Pakistan</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el=> io.observe(el));
+
+const langRow = document.getElementById('langRow');
+const langIo = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.lang-line .fill').forEach(f=>{ f.style.width = f.getAttribute('data-w') + '%'; });
+      langIo.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+langIo.observe(langRow);
+
+const cgpaRing = document.getElementById('cgpaRing');
+const ringIo = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      cgpaRing.style.transition = 'stroke-dashoffset 1.4s ease';
+      cgpaRing.style.strokeDashoffset = String(490 - (490*0.985));
+      ringIo.disconnect();
+    }
+  });
+}, { threshold: 0.4 });
+ringIo.observe(document.getElementById('education'));
+
+const certTrack = document.getElementById('certTrack');
+const certPrev = document.getElementById('certPrev');
+const certNext = document.getElementById('certNext');
+function certStep(){
+  const card = certTrack.querySelector('.cert-card');
+  return card ? card.getBoundingClientRect().width + 22 : 270;
+}
+certPrev.addEventListener('click', ()=> certTrack.scrollBy({ left: -certStep(), behavior:'smooth' }));
+certNext.addEventListener('click', ()=> certTrack.scrollBy({ left: certStep(), behavior:'smooth' }));
+
+let certAutoTimer;
+function certAutoAdvance(){
+  if(certTrack.scrollLeft + certTrack.clientWidth >= certTrack.scrollWidth - 4){
+    certTrack.scrollTo({ left: 0, behavior:'smooth' });
+  } else {
+    certTrack.scrollBy({ left: certStep(), behavior:'smooth' });
+  }
+}
+function startCertAuto(){ stopCertAuto(); certAutoTimer = setInterval(certAutoAdvance, 3800); }
+function stopCertAuto(){ clearInterval(certAutoTimer); }
+certTrack.addEventListener('mouseenter', stopCertAuto);
+certTrack.addEventListener('mouseleave', startCertAuto);
+certPrev.addEventListener('mouseenter', stopCertAuto);
+certNext.addEventListener('mouseenter', stopCertAuto);
+certPrev.addEventListener('mouseleave', startCertAuto);
+certNext.addEventListener('mouseleave', startCertAuto);
+const certReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!certReduced){ startCertAuto(); }
+
+let lastY = window.scrollY;
+function parallax(){
+  const y = window.scrollY;
+  const heroH = window.innerHeight;
+  if(y < heroH){
+    document.querySelectorAll('.hill.back').forEach(h=> h.style.transform = 'translateY(' + (y*0.12) + 'px)');
+    document.querySelectorAll('.hill.mid').forEach(h=> h.style.transform = 'translateY(' + (y*0.22) + 'px)');
+    document.querySelectorAll('.hill.front').forEach(h=> h.style.transform = 'translateY(' + (y*0.32) + 'px)');
+  }
+}
+window.addEventListener('scroll', parallax, { passive:true });
+</script>
+
+</body>
+</html>
